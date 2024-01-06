@@ -126,9 +126,9 @@ exit
 
 
 
-### 步骤 6: 安装内核和必要的软件包
+### 步骤 6: 安装必要的软件包
 
-在chroot环境中安装您需要的其他软件包，例如SSH服务器、编辑器等：
+在chroot环境中安装您需要的其他软件包:
 
 ```sh
 # 在chroot环境中
@@ -162,22 +162,11 @@ source mount.sh -u ./rootfs/
 ```
 
 
-### 步骤 8: 制作文件系统镜像（可选）
+### 步骤 8: 打包文件系统
 
 如果需要将根文件系统制作成镜像以便烧录到SD卡或其它介质，可以使用以下命令：
 
 ```sh
-# 创建一个空的镜像文件
-dd if=/dev/zero of=/path/to/arm-rootfs.img bs=1M count=1024
-
-# 格式化镜像文件为ext4文件系统
-mkfs.ext4 /path/to/arm-rootfs.img
-
-# 挂载镜像文件并复制根文件系统
-mkdir /mnt/armfs
-sudo mount -o loop /path/to/arm-rootfs.img /mnt/armfs
-sudo cp -a /path/to/rootfs/* /mnt/armfs/
-sudo umount /mnt/armfs
 #打包
 sudo tar -zcvf debian11-evcc-rootfs.tar.gz ./rootfs/*
 ```
