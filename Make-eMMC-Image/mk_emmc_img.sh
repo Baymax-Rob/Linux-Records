@@ -6,8 +6,8 @@ const_1G=1024*1024*1024
 image_size=$((1*$const_1G))
 
 # output file name
-# image_name="evcc_emmc_image.img"
-image_name="evcc_sd_emmc_test_image.img"
+# image_name="emmc_image.img"
+image_name="emmc_test_image.img"
 
 # fat part size, MB
 fat_size=100
@@ -95,8 +95,6 @@ cp -f ./fat_files/* /mnt/fat_part
 echo "copying rootfs to ext4 part..."
 # cp -rf ./ext4_files/* /mnt/ext4_part
 tar xzf ./ext4_files/debian11-test-RootFs.tar -C /mnt/ext4_part
-#tar xzf ./ext4_files/debian11-evcc-rootfs.tar -C /mnt/ext4_part
-# tar xzf ./ext4_files/debian11-evcc-rootfs.tar.gz -C /mnt/ext4_part
 
 # Force flush the file system buffer again and unmount both partitions.
 sync
